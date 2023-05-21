@@ -47,19 +47,33 @@ export const GET_PRODUCT = gql`
 `;
 
 export const GET_HIGHEST_AZIZA = gql`
-  query getHighestDiscountAziza {
+  query {
+    getHighestDiscountAziza {
     discount
   }
+}
 `;
 
 export const GET_HIGHEST_POINTM = gql`
-  query getHighestDiscountPointM {
+  query {getHighestDiscountPointM {
     discount
   }
+}
 `;
 
 export const GET_HIGHEST_EXIST = gql`
-  query getHighestDiscountExist {
+  query {getHighestDiscountExist {
+    name
+    image
+    link
+    price
+    price_on_discount
     discount
   }
+}
 `;
+export const GET_HIGHEST_WIKI=gql`
+query{getHighestDiscountWiki{
+discount
+}
+}`

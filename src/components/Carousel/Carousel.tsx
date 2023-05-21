@@ -1,25 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Aziza from "../../assets/logo-aziza.png"
 import PointM from "../../assets/pointm.svg";
-import Exist from "../../assets/exist-logo.jpg";
+import Exist from "../../assets/exist-logo.png";
+import Wiki from "../../assets/wiki-logo.png"
 import { Brand, CarouselContainer,Container,DiscountText,ImageContainer,Text,Image  } from "./Carousel.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../common/Button/Button";
-import { GET_HIGHEST_AZIZA, GET_HIGHEST_EXIST } from "../../api/gql/queries/product.query";
+import { GET_HIGHEST_AZIZA, GET_HIGHEST_EXIST, GET_HIGHEST_POINTM, GET_HIGHEST_WIKI } from "../../api/gql/queries/product.query";
 import { useQuery } from "@apollo/client";
 
-
 const Carousel:React.FC = () => {
-  const { loading, error, data } = useQuery(GET_HIGHEST_AZIZA);
-  const { loadingE, errorE, dataE } = useQuery(GET_HIGHEST_EXIST);
-  const { loadingP, errorP, dataP } = useQuery(GET_HIGHEST_AZIZA);
-  const images = [
-    { id: 1, url: Aziza,name:"Aziza/عزيزة",discount:data?.getHighestDiscountAziza[0]?.discount },
-    { id: 2, url: PointM,name:"PointM",discount:dataP?.getHighestDiscountPointM[0]?.discount },
-    { id: 3, url: Exist,name:"Exist",discount:dataE?.getHighestDiscountExist[0]?.discount },
-  ];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    { id: 1, url: Aziza, name: "Aziza", query: GET_HIGHEST_AZIZA, backgroundColor: "#FF7262" },
+    { id: 2, url: PointM, name: "PointM", query: GET_HIGHEST_POINTM, backgroundColor: "black" },
+    { id: 3, url: Exist, name: "Exist", query: GET_HIGHEST_EXIST, backgroundColor: "#FEC500" },
+    { id: 4, url: Wiki, name: "Wiki", query: GET_HIGHEST_WIKI, backgroundColor: "#59CFA8" },
+  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex + 1) % images.length);
+    }, 4000); 
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentIndex, images.length]);
+
+  const { loading, error, data } = useQuery(images[currentIndex].query);
   const handlePrevious = () => {
     setCurrentIndex((currentIndex - 1 + images.length) % images.length);
   };
@@ -27,18 +36,28 @@ const Carousel:React.FC = () => {
   const handleNext = () => {
     setCurrentIndex((currentIndex + 1) % images.length);
   };
-  return <CarouselContainer>
+  const getCurrentDiscount = () => {
+    const currentData = data[`getHighestDiscount${images[currentIndex].name}`];
+    return currentData?.[0]?.discount || 0;
+  };
+  return <CarouselContainer backgroundColor={images[currentIndex].backgroundColor}>
     
     <Text>Best Deals In/احسن الافاريات في</Text>
     <Container>
     <Brand>{images[currentIndex].name}</Brand>
-    <DiscountText>Up TO {images[currentIndex].discount}% Off/</DiscountText>
+    {
+  loading ? (
+    <DiscountText>Loading...</DiscountText>
+  ) : error ? (
+    <DiscountText>Error: {error.message}</DiscountText>
+  ) : (
+    <DiscountText>Up TO {getCurrentDiscount()} % OFF</DiscountText>
+  )
+}
     </Container>
     <ImageContainer>
-        
           <Image key={images[currentIndex].id} src={images[currentIndex].url} alt={images[currentIndex].name} />
-      
-      </ImageContainer>
+    </ImageContainer>
       
       <Button 
       backgroundcolor="#F3F9FB" 

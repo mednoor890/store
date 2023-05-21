@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const CarouselContainer=styled.div`
+export const CarouselContainer=styled.div<{ backgroundColor: string }>`
 height: 316px;
 width: 80%;
 left: 10%;
 right:10%;
 top: 220px;
 border-radius: 16px;
-background-color: #FF7262;
+background-color: ${(props) => props.backgroundColor};
 position: absolute;
 `
 
@@ -78,6 +78,6 @@ position:absolute;
 margin-right:2px;
 `;
 export const Image = styled.img`
-  height: 200px;
+  height: 316px;
   width: 500px;
 `;

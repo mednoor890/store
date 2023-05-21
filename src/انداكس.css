@@ -1,4 +1,4 @@
-:root {font-family: "";
+:root {
     
     background-color: #FFFFFF;
     font-synthesis: none;
@@ -14,6 +14,8 @@
     src: url('./fonts/Adamina-Regular.ttf') format('truetype');
     font-family: 'Abyssinica SIL';
     src: url('./fonts/AbyssinicaSIL-Regular.ttf') format('truetype');
+    font-family: 'Aksara Bali Galang';
+    src: url('./fonts/aksarabaligalang-regular.ttf') format('truetype');
 }
   
   body {
