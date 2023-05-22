@@ -5,7 +5,7 @@ position:absolute;
 top:622px;
 left:117px;
 right:117px;
-width:1106px;
+width:1136px;
 height:381px;
 background-color:#FFFEFE;
 `

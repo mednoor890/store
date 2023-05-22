@@ -57,6 +57,12 @@ export const GET_HIGHEST_AZIZA = gql`
 export const GET_HIGHEST_POINTM = gql`
   query {getHighestDiscountPointM {
     discount
+    price
+    price_on_discount
+    link
+    name
+    image
+    brand
   }
 }
 `;
@@ -75,5 +81,21 @@ export const GET_HIGHEST_EXIST = gql`
 export const GET_HIGHEST_WIKI=gql`
 query{getHighestDiscountWiki{
 discount
+name
+image
+link
+price
+price_on_discount
+brand
 }
 }`
+export const GET_LOWEST_PRICES =gql`
+query {getLowestPrices
+  {
+name
+price
+image
+
+  }
+}
+`

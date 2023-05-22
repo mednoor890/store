@@ -1,14 +1,21 @@
-import Navbar from './components/common/Navbar/Navbar'
-import Carousel from './components/Carousel/Carousel'
-import Deals from './components/Deals/Deals'
 
+import LandingPage from './pages/LandingPage'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+
+} from "react-router-dom";
 function App() {
 
   return (
     <>
-      <Navbar/>
-      <Carousel/>
-      <Deals/>
+    <Router >
+      <Routes>
+        <Route path="/" element={<LandingPage/>}/>
+      </Routes>
+    </Router>
+      
     </>
   )
 }

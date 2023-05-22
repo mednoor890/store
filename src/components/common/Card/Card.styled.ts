@@ -9,13 +9,12 @@ position:relative;
   border: 1px solid #EDEDED;
   border-radius: 16px;
   background-color: #F5F5F5;
-  height: 450px;
+  height: 375px;
   width: 227px ;
 margin-right:16px;
 &:hover
 {
     border: 1px solid #1AE216;
-    cursor:pointer;
     box-shadow: 0px 4px 8px rgba(26, 226, 22, 0.55);
 
 }
@@ -97,4 +96,31 @@ export const PriceLine = styled.div`
   background-color: #EDEDED;
   margin-top: auto;
   margin-bottom: 4px;
+`;
+export const Link = styled.a`
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.6s ease;
+  &:hover {
+    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.15);
+  }
+`;
+export const LoadingIcon = styled.div`
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;

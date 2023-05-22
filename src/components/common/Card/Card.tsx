@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CardContainer, Image, Name, Price, OldPrice, PriceDifference, DetailsContainer, PriceLine, DiscountBox } from "./Card.styled";
+import { CardContainer, Image, Name, Price, OldPrice, PriceDifference, DetailsContainer, PriceLine, DiscountBox, Link } from "./Card.styled";
 interface CardProps
 {
     imageUrl:string;
@@ -9,8 +9,9 @@ interface CardProps
     oldPrice:number;
     priceDifference:number;
     discount:number;
+    link:string;
 }
-const Card :React.FC<CardProps>= ({ imageUrl, name, price, oldPrice,discount }) => {
+const Card :React.FC<CardProps>= ({ imageUrl, name, price, oldPrice,discount,link }) => {
   const priceDifference = oldPrice - price;
 
   return (
@@ -22,8 +23,11 @@ const Card :React.FC<CardProps>= ({ imageUrl, name, price, oldPrice,discount }) 
       <Price>{price} DT</Price>
       <OldPrice>{oldPrice} DT</OldPrice>
       <PriceLine/>
+      <Link href={link} target="_blank">
       <PriceDifference>/وفر Save {priceDifference} DT</PriceDifference>
+      </Link>
       </DetailsContainer>
+     
     </CardContainer>
   );
 };
