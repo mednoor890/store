@@ -20,7 +20,7 @@ const LowestPrices:React.FC = () => {
   const lowestPrices = data?.getLowestPrices
 
   return ( <LowestContainer>
-    <DealsTitle>أرخص الأسوام/Lowest Prices in AZIZA</DealsTitle>
+    <DealsTitle>أرخص أسوام اللمجة عند عزيزة/Lowest Snack Prices in AZIZA</DealsTitle>
     <PricesContainer>
     {lowestPrices.map((product:any) => (
         <Prices
