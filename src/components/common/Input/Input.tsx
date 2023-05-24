@@ -1,5 +1,7 @@
-import React from "react";
+import React   from "react";
 import { InputField, InputWrapper, Label } from "./Input.styled";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface InputProps {
   label?: string;
@@ -7,8 +9,9 @@ interface InputProps {
   value?: string;
   placeholder?: string;
   type?: string; 
+  icon?:IconDefinition;
 }
- const Input: React.FC<InputProps> = ({ label, name, value, placeholder, type }) => {
+ const Input: React.FC<InputProps> = ({ label, name, value, placeholder, type ,icon}) => {
   return (
     <InputWrapper>
       {label && <Label>{label}</Label>}
@@ -18,6 +21,8 @@ interface InputProps {
         value={value}
         placeholder={placeholder}
       />
+            {icon && <FontAwesomeIcon icon={icon} />}
+
     </InputWrapper>
   );
 };

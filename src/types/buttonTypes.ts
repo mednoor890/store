@@ -17,4 +17,6 @@ export interface ButtonProps {
     borderright?:string;
     bordertop?:string;
     borderbottom?:string;
+    fontsize?:string;
+    color?:string;
 }

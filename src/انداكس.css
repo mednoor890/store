@@ -10,13 +10,33 @@
   @font-face {
     font-family: 'Actor';
     src: url('./fonts/Actor-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
     font-family: 'Adamina';
     src: url('./fonts/Adamina-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
     font-family: 'Abyssinica SIL';
     src: url('./fonts/AbyssinicaSIL-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
     font-family: 'Aksara Bali Galang';
     src: url('./fonts/aksarabaligalang-regular.ttf') format('truetype');
-}
+  }
+  
+  @font-face {
+    font-family: 'PoetsenOne';
+    src: url('./fonts/PoetsenOne-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Public Sans';
+    src: url('./fonts/PublicSans-VariableFont_wght.ttf') format('truetype');
+  }
+  
   
   body {
     margin: 0;

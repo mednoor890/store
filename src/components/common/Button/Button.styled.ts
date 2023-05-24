@@ -16,6 +16,8 @@ interface StyledButtonProps
   borderright?:string;
   bordertop?:string;
   borderbottom?:string;
+  fontsize?:string;
+  color?:string;
 }
 export const Btn = styled.button<StyledButtonProps>`
 background-color: ${props => props.backgroundcolor ? props.backgroundcolor : '#5832EB'};
@@ -26,7 +28,7 @@ border-radius: ${props=> props.borderradius ? props.borderradius :'18px'};
 position:${props=> props.position };
 width:${props=> props.width ? props.width :'111px'};
 font-family:Abyssinica SIL;
-font-size: 14px;
+font-size: ${props=> props.fontsize ? props.fontsize :'14px'};
 font-weight: 400;
 line-height: 18px;
 letter-spacing: 0em;
@@ -38,8 +40,9 @@ border-top:${props=>props.bordertop ? props.bordertop :"none"};
 border-bottom:${props=>props.borderbottom ? props.borderbottom :"none"};
 left: ${props=> props.left ? props.left :"14px"};
 top: ${props=> props.top ? props.top :"3px"} ;
+color:${props=> props.color };
 &:hover {  
-background-color:${props=> props.hoverbackgroundcolor ? props.hoverbackgroundcolor : "white"};
+background-color:${props=> props.hoverbackgroundcolor ? props.hoverbackgroundcolor : "none"};
 color:${props=> props.hovercolor ? props.hovercolor : "black"};
 }
 `

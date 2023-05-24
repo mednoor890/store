@@ -1,5 +1,6 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link as RouterLink } from "react-router-dom";
 import { BottomContainer, ButtonsContainer, Link, LinksContainer, Nav, SearchBar, Separator, TextContainer, TopContainer } from "./Navbar.styled";
 import { Button } from "../Button/Button";
 export const Navbar = () => {
@@ -9,13 +10,18 @@ export const Navbar = () => {
         <TextContainer>Welcome!!Fi Promowafar !!عسلامة</TextContainer>
       </TopContainer>
        
-                <SearchBar type="text" placeholder="Search  /  lawaj  /  ابحث" />
+                <SearchBar type="text" placeholder="Search    /  ابحث" />
                 <FontAwesomeIcon icon={faSearch} style={{ color:'#1AE216',position: 'absolute', top: '80px', left: '480px' }} />
 
                 <LinksContainer>
-        <Link href="#">Sign In</Link>
+                <RouterLink to="/signin">
+
+        <Link>Sign In</Link>
+        </RouterLink>
         <Separator />
-        <Link href="#">Sign Up</Link>
+        <RouterLink to="/signup">
+        <Link >Sign Up</Link>
+        </RouterLink>
       </LinksContainer>
       <BottomContainer>
         <ButtonsContainer>
