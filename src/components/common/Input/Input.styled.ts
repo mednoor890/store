@@ -27,5 +27,8 @@ export const InputField = styled.input`
   }
 `;
 export const InputWrapper = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
+export const ErrorMessage = styled.p`
+color: red;
+`
