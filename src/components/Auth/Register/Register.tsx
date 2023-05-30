@@ -65,7 +65,7 @@ const Register: React.FC = () => {
       if (data){
       const response = await registerCustomer(data);
       console.log(response);
-      navigate("/")
+      navigate("/signin")
           console.log(data);}
           else
           {
@@ -79,8 +79,8 @@ const Register: React.FC = () => {
   };
 
   return (
-    <FormWrapper height="550px">
-      <Form top="10px" height="530px" onSubmit={handleSubmit(onSubmit)}>
+    <FormWrapper height="600px">
+      <Form top="5px" height="530px" onSubmit={handleSubmit(onSubmit)}>
         <HeadTitle>Register/ أدخل</HeadTitle>
         <WelcomeMsg>Join & Save / انضم و وفر</WelcomeMsg>
         {RegisterInputs.map((RegisterInput) => (

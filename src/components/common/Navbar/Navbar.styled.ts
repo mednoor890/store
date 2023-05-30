@@ -89,7 +89,7 @@ font-weight: 400;
 line-height: 18px;
 letter-spacing: 0em;
 text-align: left;
-
+cursor:pointer;
   color: #666666;
   text-decoration: none;
 `;

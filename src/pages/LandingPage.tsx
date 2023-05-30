@@ -10,7 +10,7 @@ const LandingPage:React.FC = () => {
   return <>
   <Navbar/>
       <Carousel/>
-      <Deals/>
+      <Deals />
       <LowestPrices/>
       <TopBrand/>
       <Footer/>

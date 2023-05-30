@@ -50,12 +50,14 @@ export const GET_HIGHEST_AZIZA = gql`
   query {
     getHighestDiscountAziza {
     discount
+    _id
   }
 }
 `;
 
 export const GET_HIGHEST_POINTM = gql`
   query {getHighestDiscountPointM {
+    _id
     discount
     price
     price_on_discount
@@ -75,11 +77,13 @@ export const GET_HIGHEST_EXIST = gql`
     price
     price_on_discount
     discount
+    _id
   }
 }
 `;
 export const GET_HIGHEST_WIKI=gql`
 query{getHighestDiscountWiki{
+_id
 discount
 name
 image
@@ -92,6 +96,7 @@ brand
 export const GET_LOWEST_PRICES =gql`
 query {getLowestPrices
   {
+_id
 name
 price
 image
@@ -99,3 +104,90 @@ image
   }
 }
 `
+export const GET_AZIZA=gql`
+query
+{
+  getAziza
+  {
+    
+      _id,
+      availibility,
+      brand,
+      category {_id},
+      description,
+      discount,
+      endDate,
+      image,
+      name,
+      price,
+      price_on_discount,
+      quantity,
+      startDate
+    
+  }
+ }
+  `
+export const GET_POINTM=gql`
+query
+{
+  getPointM
+  {
+    
+      _id,
+      availibility,
+      brand,
+      category {_id},
+      description,
+      discount,
+      endDate,
+      image,
+      name,
+      price,
+      price_on_discount,
+      quantity,
+      startDate
+    
+  }
+}
+`
+export const GET_WIKI=gql`
+query{
+  getWiki
+  {
+      _id,
+      availibility,
+      brand,
+      category {_id},
+      description,
+      discount,
+      endDate,
+      image,
+      name,
+      price,
+      price_on_discount,
+      quantity,
+      startDate  
+  }}
+`
+export const GET_EXIST=gql`
+query
+{
+  getExist
+  {
+      _id,
+      availibility,
+      brand,
+      category {_id},
+      description,
+      discount,
+      endDate,
+      image,
+      name,
+      price,
+      price_on_discount,
+      quantity,
+      startDate
+    
+  }
+}
+  `

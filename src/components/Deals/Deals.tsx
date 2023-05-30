@@ -4,9 +4,24 @@ import { GET_HIGHEST_EXIST } from "../../api/gql/queries/product.query";
 import { useQuery } from "@apollo/client";
 import Card from "../common/Card/Card";
 import { LoadingIcon, ProductsContainer } from "../common/Card/Card.styled";
+import { Button } from "../common/Button/Button";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 const Deals: React.FC = () => {
   const { loading, error, data } = useQuery(GET_HIGHEST_EXIST);
-
+const navigate=useNavigate()
+const authToken = Cookies.get("customerToken");
+const handleView=()=>
+{
+  if (authToken)
+  {
+    navigate("/promotions")
+  }
+  else
+  {
+ navigate("/signin")
+  }
+}
   if (loading) {
     return <DealsContainer><LoadingIcon/></DealsContainer>;
   }
@@ -19,11 +34,14 @@ const Deals: React.FC = () => {
 
   return (
     <DealsContainer>
-      <DealsTitle>Top 5 in <Source>Exist</Source></DealsTitle>
+      <DealsTitle>Top 5 in <Source> Exist </Source>  
+          <Button           onClick={() => handleView()}
+hovercolor="#1AE216" color="black" backgroundcolor="white"  position="relative" left="898px" top="2px">View All</Button>
+</DealsTitle>
       <ProductsContainer>
-      {products.map((product:any) => (
+      {products.map((product:any) => ( 
         <Card
-          key={product.id}
+          key={product._id}
           imageUrl={product.image}
           link={product.link}
           name={product.name}

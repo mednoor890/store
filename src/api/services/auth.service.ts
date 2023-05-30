@@ -1,7 +1,9 @@
 import { client } from "../client";
 import { LOGIN_MUTATION, REGISTER_MUTATION } from "../gql/mutations/auth.mutation";
+import Cookies from 'js-cookie';
+
 interface LoginResponse {
-    login:{
+    loginCustomer:{
         Token: string
     }
 }
@@ -24,21 +26,21 @@ export const loginCustomer =async(email:string, password:string)=>
         variables:credentials
     });
     console.log("loginRequest response", response);
-    const authToken= response.data?.login.Token;
-    if (authToken) {
-        document.cookie= (authToken);
-        console.log("Login succesful, auth token", authToken);
+    const customerToken= response.data?.loginCustomer;
+    if (customerToken) {
+        Cookies.set('customerToken', customerToken.Token, { expires: 7, secure: true });
+
+        console.log("Login succesful, auth token", customerToken);
         
     }
     else {
         console.log("Login failed, no auth token");
     }
-    return authToken;
+    return customerToken;
     }
     catch (err) {
         console.error("Error during login",err);
-           throw new Error("Login failed")
-          
+           //throw new Error("Login failed")
         }
 }
 export const registerCustomer =async(input:RegisterInput)=>

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormWrapper, HeadTitle, WelcomeMsg } from "../Auth.styled";
 import { useForm } from "react-hook-form";
 import Input from "../../common/Input/Input";
 import { Button } from "../../common/Button/Button";
 import { faEye, faEyeSlash, faUser } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginCustomer } from "../../../api/services/auth.service";
 
 const Login: React.FC = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const LoginInputs = [
     {
       id: 1,
@@ -19,17 +21,34 @@ const Login: React.FC = () => {
     {
       id: 2,
       name: "password",
-      type: "password",
+      type: showPassword ? "text" : "password", 
       label: "Password",
       placeholder: "Password",
-      icon: faEye,
+      icon: showPassword ? faEye : faEyeSlash,
+      
     },
   ];
-
-  const { handleSubmit, register, formState: { errors } } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+  
+  const { handleSubmit, register, formState: { errors } ,reset} = useForm();
+  const navigate=useNavigate()
+  const onSubmit = async (data: any) => {
+     try {
+     const token = await loginCustomer(data.email,data.password);
+     if (token) {
+      document.cookie = `authToken=${token}`;
+     navigate("/")
+     }
+     else
+     {
+      console.log("Invalid credentials");
+      reset()
+     }
+     } catch (error) {
+      console.log(error);
+     }
   };
 
   return (
@@ -49,6 +68,7 @@ const Login: React.FC = () => {
             icon={LoginInput.icon}
             register={register}
             error={errors[LoginInput.name]?.message}
+            togglePasswordVisibility={togglePasswordVisibility} 
             rules={
               LoginInput.name === "email"
                 ? {

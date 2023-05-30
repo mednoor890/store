@@ -29,6 +29,5 @@ border-bottom: 1px solid #EDEDED;
 `
 export const Source=styled.span`
 color:#1AE216;
-margin-left:5px;
 
 `

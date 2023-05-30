@@ -14,6 +14,7 @@ interface InputProps {
   register: UseFormRegister<FieldValues>;
   error?: string ;
   rules: object;
+  togglePasswordVisibility: ()=>void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   register,
   error,
   rules,
+  togglePasswordVisibility, // Add the prop
 }) => {
   return (
     <InputWrapper>
@@ -34,9 +36,14 @@ const Input: React.FC<InputProps> = ({
         type={type}
         value={value}
         placeholder={placeholder}
-        {...register(name, rules)} 
+        {...register(name, rules)}
       />
-      {icon && <FontAwesomeIcon icon={icon} />}
+      {icon && (
+        <FontAwesomeIcon
+          icon={icon}
+          onClick={togglePasswordVisibility} // Call the togglePasswordVisibility function on icon click
+        />
+      )}
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputWrapper>
   );
