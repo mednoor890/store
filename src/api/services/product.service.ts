@@ -1,4 +1,4 @@
-import { client } from "../client";
+import client from "../client";
 import { GET_AZIZA, GET_EXIST, GET_POINTM, GET_PRODUCTS, GET_WIKI } from "../gql/queries/product.query";
 
 export const fetchProducts= async ()=> 

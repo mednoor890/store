@@ -1,7 +1,7 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { BottomContainer, ButtonsContainer, Link, LinksContainer, Nav, SearchBar, Separator, TextContainer, TopContainer } from "./Navbar.styled";
+import { BottomContainer, ButtonsContainer, Link, LinksContainer, Nav, Promo, SearchBar, Separator, TextContainer, TopContainer } from "./Navbar.styled";
 import { Button } from "../Button/Button";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -24,7 +24,7 @@ export const Navbar = () => {
       <TopContainer>
         <TextContainer>Welcome!!Fi Promowafar !!عسلامة</TextContainer>
       </TopContainer>
-       
+                <RouterLink to='/'><Promo>PromoWAfar</Promo></RouterLink>
                 <SearchBar type="text" placeholder="Search    /  ابحث" />
                 <FontAwesomeIcon icon={faSearch} style={{ color:'#1AE216',position: 'absolute', top: '80px', left: '480px' }} />
 
@@ -51,20 +51,27 @@ export const Navbar = () => {
           backgroundcolor="#F3F9FB" 
            hoverbackgroundcolor="#1AE216"
            hovercolor="white"
-          >Mode</Button>
+          >Fashion man</Button>
           <Button
           backgroundcolor="#F2F8FB"
           hoverbackgroundcolor="#1AE216"
           hovercolor="white"
           >
-         Informatique
+         Electronics
           </Button>
           <Button
           backgroundcolor="#F2F8FB"
           hoverbackgroundcolor="#1AE216"
           hovercolor="white"
           >
-           Supermarché
+           Supermarket
+          </Button>
+          <Button
+          backgroundcolor="#F2F8FB"
+          hoverbackgroundcolor="#1AE216"
+          hovercolor="white"
+          >
+           lifeStyle
           </Button>
           </ButtonsContainer>
       </BottomContainer>

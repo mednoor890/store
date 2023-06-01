@@ -6,7 +6,7 @@ import { Button } from "../../common/Button/Button";
 import { faEye, faEyeSlash, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { loginCustomer } from "../../../api/services/auth.service";
-
+import Cookies from 'js-cookie';
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const LoginInputs = [
@@ -38,7 +38,7 @@ const Login: React.FC = () => {
      try {
      const token = await loginCustomer(data.email,data.password);
      if (token) {
-      document.cookie = `authToken=${token}`;
+              Cookies.set('authToken', token.Token);
      navigate("/")
      }
      else

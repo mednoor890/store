@@ -1,16 +1,8 @@
 
 import React from "react";
 import { CardContainer, Image, Name, Price, OldPrice, PriceDifference, DetailsContainer, PriceLine, DiscountBox, Link } from "./Card.styled";
-interface CardProps
-{
-    imageUrl:string;
-    name:string;
-    price:number;
-    oldPrice:number;
-    priceDifference:number;
-    discount:number;
-    link:string;
-}
+import { CardProps } from "../../../types/CardTypes";
+
 const Card :React.FC<CardProps>= ({ imageUrl, name, price, oldPrice,discount,link }) => {
   const priceDifference = oldPrice - price;
 

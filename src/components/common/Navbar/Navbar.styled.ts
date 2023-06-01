@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Nav=styled.nav`
 height:201px;
@@ -48,6 +48,28 @@ letter-spacing: 0em;
 text-align: left;
 color:#666666
 `
+const textAnimation = keyframes`
+  0% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+`;
+
+export const Promo = styled.h1`
+  position: absolute;
+  top: 65px;
+  left: 150px;
+  font-family: PoetsenOne;
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: ${textAnimation} 2s infinite;
+`;
 export const SearchBar=styled.input`
 position: absolute;
 width: 507px;

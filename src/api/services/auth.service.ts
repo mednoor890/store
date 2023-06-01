@@ -1,4 +1,4 @@
-import { client } from "../client";
+import client from "../client";
 import { LOGIN_MUTATION, REGISTER_MUTATION } from "../gql/mutations/auth.mutation";
 import Cookies from 'js-cookie';
 
