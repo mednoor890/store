@@ -10,7 +10,14 @@ export const CardsContainer = styled.div`
   top:500px;
   left:10px;
 `;
-
+export const Sign=styled.h1`
+color:#1AE216;
+font-size:18px;
+font-family:Actor;
+position:relative;
+left:450px;
+top:-75px;
+`
 export const CardContainer = styled.div`
   width: 100%;
 

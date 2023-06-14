@@ -7,11 +7,13 @@ import Cookies from "js-cookie";
 const httpLink = createHttpLink({ uri: 'http://localhost:5000/graphql' });
 const authLink = setContext((_, { headers }) => {
   const cookies = Cookies.get();
-  const customerToken = cookies['customerToken'];
+  //console.log(cookies)
+  const token = cookies['customerToken'];
+ // console.log(token)
   return {
     headers: {
       ...headers,
-      authorization: customerToken ? ` ${customerToken}` : "",
+      authorization: token ? ` ${token}` : "",
     }
   }
 });

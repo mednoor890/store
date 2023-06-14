@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormWrapper, HeadTitle, WelcomeMsg } from "../Auth.styled";
 import Input from "../../common/Input/Input";
 import { useForm } from "react-hook-form";
 import { Button } from "../../common/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { registerCustomer } from "../../../api/services/auth.service";
+import ImageUploader from "../../common/ImageUploader/ImageUploader";
 
 const Register: React.FC = () => {
   const RegisterInputs = [
@@ -56,7 +57,30 @@ const Register: React.FC = () => {
         },
       },
     },
+    {
+      id: 15,
+      name: "image",
+      type: "file",
+      label: "Image",
+      accept: "image/*", // Specify accepted file types, e.g., "image/png,image/jpeg"
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+          // Read the file and convert it to a base64 string
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const base64String = reader.result as string;
+            setImage(base64String);
+          };
+          reader.readAsDataURL(file);
+        }
+      },
+      validationRules: {
+        required: "Image is required",
+      },
+    },
   ];
+  const [image, setImage] = useState<string | null>(null);
 
   const { handleSubmit, register, formState: { errors },reset } = useForm();
   const navigate =useNavigate();
@@ -83,18 +107,31 @@ const Register: React.FC = () => {
       <Form top="5px" height="530px" onSubmit={handleSubmit(onSubmit)}>
         <HeadTitle>Register/ أدخل</HeadTitle>
         <WelcomeMsg>Join & Save / انضم و وفر</WelcomeMsg>
-        {RegisterInputs.map((RegisterInput) => (
-          <Input
+        {RegisterInputs.map((RegisterInput) => {
+      if (RegisterInput.name === "image") {
+        return (
+          <ImageUploader
             key={RegisterInput.id}
-            name={RegisterInput.name}
             label={RegisterInput.label}
-            type={RegisterInput.type}
-            placeholder={RegisterInput.placeholder}
-            register={register}
+            accept={RegisterInput.accept}
+            onChange={RegisterInput.onChange}
             error={errors[RegisterInput.name]?.message}
-            rules={RegisterInput.validationRules}
           />
-        ))}
+        );
+      }
+      return (
+        <Input
+          key={RegisterInput.id}
+          name={RegisterInput.name}
+          label={RegisterInput.label}
+          type={RegisterInput.type}
+          placeholder={RegisterInput.placeholder}
+          register={register}
+          error={errors[RegisterInput.name]?.message}
+          rules={RegisterInput.validationRules}
+        />
+      );
+    })}
         <Button
           type="submit"
           backgroundcolor="#1AE216"

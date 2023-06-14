@@ -3,8 +3,10 @@ import { GET_PRODUCTS } from "../../api/gql/queries/product.query";
 import { LowestContainer } from "../DealsAz/Lowest.styled";
 import Card from "../common/Card/Card";
 import { LoadingIcon } from "../common/Card/Card.styled";
-import { CardsContainer, CardContainer } from "./Promotions.styled";
-
+import { CardsContainer, CardContainer, Sign } from "./Promotions.styled";
+import { Link as RouterLink} from "react-router-dom";
+import { Link } from "../common/Navbar/Navbar.styled";
+ 
 interface Product {
     _id: string;
     availibility: string;
@@ -35,7 +37,8 @@ const Promotions: React.FC = () => {
     }
   
     if (error) {
-      return <p>Error: {error.message}</p>;
+      console.log(error);
+      return <CardsContainer><Sign> <RouterLink to="/signin"><Link>Sign in</Link></RouterLink> or <RouterLink to='/signup'><Link>Sign Up</Link></RouterLink> to see promotions</Sign></CardsContainer>;
     }
   
     return (

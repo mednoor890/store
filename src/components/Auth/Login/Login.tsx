@@ -38,7 +38,8 @@ const Login: React.FC = () => {
      try {
      const token = await loginCustomer(data.email,data.password);
      if (token) {
-              Cookies.set('authToken', token.Token);
+              Cookies.set('customerToken', token.Token);
+              console.log(data);
      navigate("/")
      }
      else

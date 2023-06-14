@@ -21,7 +21,7 @@ const Carousel:React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((currentIndex + 1) % images.length);
-    }, 4000); 
+    }, 5000); 
 
     return () => {
       clearInterval(interval);
