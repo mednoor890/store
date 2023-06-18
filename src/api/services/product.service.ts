@@ -1,5 +1,5 @@
 import client from "../client";
-import { GET_AZIZA, GET_EXIST, GET_POINTM, GET_PRODUCTS, GET_WIKI } from "../gql/queries/product.query";
+import { GET_AZIZA, GET_BAITY, GET_EXIST, GET_POINTM, GET_PRODUCTS, GET_WIKI } from "../gql/queries/product.query";
 
 export const fetchProducts= async ()=> 
 {
@@ -53,6 +53,17 @@ export const fetchExistProducts = async () =>
       query: GET_EXIST,
     });
     return data.getExist
+  } catch (error) {
+    console.error(error);
+  }
+}
+export const fetchBaityProducts = async () => 
+{
+  try {
+    const {data} = await client.query({
+      query: GET_BAITY,
+    });
+    return data.getBaity
   } catch (error) {
     console.error(error);
   }

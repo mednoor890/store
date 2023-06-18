@@ -68,7 +68,19 @@ export const GET_HIGHEST_POINTM = gql`
   }
 }
 `;
-
+export const GET_HIGHEST_BAITY = gql`
+  query {getHighestDiscountBaity {
+    _id
+    discount
+    price
+    price_on_discount
+    link
+    name
+    image
+    brand
+  }
+}
+`;
 export const GET_HIGHEST_EXIST = gql`
   query {getHighestDiscountExist {
     name
@@ -113,6 +125,7 @@ query
       _id,
       availibility,
       brand,
+      link,
       category {_id},
       description,
       discount,
@@ -136,6 +149,7 @@ query
       _id,
       availibility,
       brand,
+      link,
       category {_id},
       description,
       discount,
@@ -157,6 +171,7 @@ query{
       _id,
       availibility,
       brand,
+      link,
       category {_id},
       description,
       discount,
@@ -186,8 +201,32 @@ query
       price,
       price_on_discount,
       quantity,
-      startDate
+      startDate,
+      link
     
   }
 }
   `
+  export const GET_BAITY=gql`
+  query
+  {
+    getBaity
+    {
+      
+        _id,
+        availibility,
+        brand,
+        link,
+        category {_id},
+        description,
+        discount,
+        endDate,
+        image,
+        name,
+        price,
+        price_on_discount,
+        
+      
+    }
+   }
+    `

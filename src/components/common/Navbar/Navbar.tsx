@@ -6,7 +6,7 @@ import { Button } from "../Button/Button";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode"; 
 import { useEffect, useState } from "react";
-import { fetchAzizaProducts, fetchExistProducts, fetchPointMProducts, fetchWikiProducts } from "../../../api/services/product.service";
+import { fetchAzizaProducts, fetchBaityProducts, fetchExistProducts, fetchPointMProducts, fetchWikiProducts } from "../../../api/services/product.service";
 
 export const Navbar = () => {
   const [token, setToken] = useState("");
@@ -43,8 +43,8 @@ export const Navbar = () => {
     navigate("/");
   };
   const handleCategoryClick = async (category:string) => {
-    try {
-      let products;
+   try {
+   /*   let products;
 
       // Make the API call based on the category
       switch (category) {
@@ -60,11 +60,14 @@ export const Navbar = () => {
         case 'lifestyle':
           products = await fetchPointMProducts();
           break;
+          case 'home':
+            products = await fetchBaityProducts();
+            break;
         default:
           return;
       }
 
-      console.log(products);
+      console.log(products);*/
       navigate(`/${category}`);
     } catch (error) {
       console.error(error);
@@ -103,7 +106,7 @@ export const Navbar = () => {
             hovercolor="white"
             onClick={()=>handleCategoryClick("fashion")}
           >
-            Fashion man
+            Fashion Man
           </Button>
           <Button
             backgroundcolor="#F2F8FB"
@@ -129,7 +132,15 @@ export const Navbar = () => {
             hovercolor="white"
             onClick={()=>handleCategoryClick("lifestyle")} 
 >
-            lifeStyle
+            LifeStyle
+          </Button>
+          <Button
+            backgroundcolor="#F2F8FB"
+            hoverbackgroundcolor="#1AE216"
+            hovercolor="white"
+            onClick={()=>handleCategoryClick("decoration")} 
+>
+            Decoration
           </Button>
         </ButtonsContainer>
       </BottomContainer>

@@ -26,9 +26,9 @@ border: 1px solid #EDEDED;
 export const ButtonsContainer =styled.div`
 display: flex;
   align-items: center;
-  gap:25px;
+  gap:105px;
 height: 36px;
-left: 90px;
+left: 190px;
 top:15px;
 border-radius: 18px;
 position:absolute;

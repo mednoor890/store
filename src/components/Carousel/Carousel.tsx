@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Aziza from "../../assets/logo-aziza.png"
 import PointM from "../../assets/pointm.svg";
 import Exist from "../../assets/exist-logo.png";
-import Wiki from "../../assets/wiki-logo.png"
+import Wiki from "../../assets/wiki-logo.png";
+import Baity from "../../assets/baity-logo.jpg"
 import { Brand, CarouselContainer,Container,DiscountText,ImageContainer,Text,Image  } from "./Carousel.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../common/Button/Button";
-import { GET_HIGHEST_AZIZA, GET_HIGHEST_EXIST, GET_HIGHEST_POINTM, GET_HIGHEST_WIKI } from "../../api/gql/queries/product.query";
+import { GET_HIGHEST_AZIZA, GET_HIGHEST_BAITY, GET_HIGHEST_EXIST, GET_HIGHEST_POINTM, GET_HIGHEST_WIKI } from "../../api/gql/queries/product.query";
 import { useQuery } from "@apollo/client";
 
 const Carousel:React.FC = () => {
@@ -17,6 +18,7 @@ const Carousel:React.FC = () => {
     { id: 2, url: PointM, name: "PointM", query: GET_HIGHEST_POINTM, backgroundColor: "black" },
     { id: 3, url: Exist, name: "Exist", query: GET_HIGHEST_EXIST, backgroundColor: "#FEC500" },
     { id: 4, url: Wiki, name: "Wiki", query: GET_HIGHEST_WIKI, backgroundColor: "#59CFA8" },
+    {id:5,url:Baity,name: "Baity", query:GET_HIGHEST_BAITY, backgroundColor: "turquoise"}
   ];
   useEffect(() => {
     const interval = setInterval(() => {
