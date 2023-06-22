@@ -230,3 +230,19 @@ query
     }
    }
     `
+
+    export const GET_PRODUCT_BY_SEARCH = gql`
+    query getProductsBySearch($productName: String!) {
+      getProductsBySearch(productName: $productName) {
+        _id
+        brand
+        description
+        discount
+        image
+        name
+        price
+        price_on_discount
+        link
+      }
+    }
+  `;

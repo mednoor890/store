@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
@@ -33,6 +34,19 @@ export const DiscountBox = styled.div`
   align-items: center;
   justify-content: center;
 `;
+export const ShareBox = styled.div`
+  position: absolute;
+  top: 180px;
+right:15px;
+  width:5px;
+  color:white;
+  align-items:center;
+  background: #F5F5F5;
+  border-radius: 0px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const ProductsContainer = styled.div`
 position:relative;
 margin-right:40px;
@@ -54,7 +68,7 @@ position:absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  max-width: 100%;
 `;
 export const Image = styled.img`
   
@@ -69,6 +83,9 @@ export const Name = styled.h3`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Price = styled.p`
@@ -123,4 +140,24 @@ export const LoadingIcon = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+export const FacebookButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b5998;
+  color: #fff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2d4373;
+  }
+`;
+
+export const FacebookIcon = styled(FontAwesomeIcon)`
+  margin-right: 8px;
 `;

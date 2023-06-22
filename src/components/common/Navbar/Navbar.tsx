@@ -1,86 +1,85 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { BottomContainer, ButtonsContainer, Link, LinksContainer, Nav, Promo, SearchBar, Separator, TextContainer, TopContainer } from "./Navbar.styled";
 import { Button } from "../Button/Button";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode"; 
-import { useEffect, useState } from "react";
-import { fetchAzizaProducts, fetchBaityProducts, fetchExistProducts, fetchPointMProducts, fetchWikiProducts } from "../../../api/services/product.service";
+import jwtDecode from "jwt-decode";
+import {
+  BottomContainer,
+  ButtonsContainer,
+  Link,
+  LinksContainer,
+  Nav,
+  Promo,
+  SearchBar,
+  Separator,
+  TextContainer,
+  TopContainer,
+} from "./Navbar.styled";
 
 export const Navbar = () => {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(""); 
+ // const [showSearchResults, setShowSearchResults] = useState(false);
+
+  const navigate = useNavigate();
+
+  
+  
+
   useEffect(() => {
     checkTokenValidity();
   }, []);
-  
-  const navigate = useNavigate();
-  
+
   const checkTokenValidity = () => {
-    const authToken = Cookies.get('customerToken');
+    const authToken = Cookies.get("customerToken");
     if (authToken) {
       try {
         const decodedToken = jwtDecode<{ exp: number }>(authToken);
         const currentTime = Math.floor(Date.now() / 1000); // Convert current time to seconds
-  
         if (decodedToken.exp < currentTime) {
           handleLogout();
           return;
         }
-  
         setToken(authToken);
       } catch (error) {
-        console.error('Failed to decode token:', error);
+        console.error("Failed to decode token:", error);
         handleLogout();
       }
     }
   };
-  
-  
   const handleLogout = () => {
     Cookies.remove("customerToken");
     setToken("");
     navigate("/");
   };
-  const handleCategoryClick = async (category:string) => {
-   try {
-   /*   let products;
 
-      // Make the API call based on the category
-      switch (category) {
-        case 'fashion':
-          products = await fetchExistProducts();
-          break;
-        case 'electronics':
-          products = await fetchWikiProducts();
-          break;
-        case 'supermarket':
-          products = await fetchAzizaProducts();
-          break;
-        case 'lifestyle':
-          products = await fetchPointMProducts();
-          break;
-          case 'home':
-            products = await fetchBaityProducts();
-            break;
-        default:
-          return;
-      }
+ 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const searchInput = event.currentTarget.value;
+      //handleSearch(searchInput);
+     navigate(`/search?query=${searchInput}`);
 
-      console.log(products);*/
+    }
+  };
+
+  const handleCategoryClick = async (category: string) => {
+    try {
       navigate(`/${category}`);
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <Nav>
       <TopContainer>
         <TextContainer>Welcome!! Fi Promowafar !! عسلامة</TextContainer>
       </TopContainer>
-      <RouterLink to="/"><Promo>PromoWAfar</Promo></RouterLink>
-      <SearchBar type="text" placeholder="Search / ابحث" />
-      <FontAwesomeIcon icon={faSearch} style={{ color: '#1AE216', position: 'absolute', top: '80px', left: '480px' }} />
+     <RouterLink to="/"><Promo>PromoWAfar</Promo></RouterLink> 
+      <SearchBar type="text" placeholder="Search / ابحث" onKeyPress={handleKeyPress} />
+      <FontAwesomeIcon icon={faSearch} style={{ color: "#1AE216", position: "absolute", top: "80px", left: "480px" }} />
       <LinksContainer>
         {token ? (
           <>
@@ -88,13 +87,9 @@ export const Navbar = () => {
           </>
         ) : (
           <>
-            <RouterLink to="/signin">
-              <Link>Sign In</Link>
-            </RouterLink>
+            <RouterLink to="/signin"><Link>Sign In</Link></RouterLink>
             <Separator />
-            <RouterLink to="/signup">
-              <Link>Sign Up</Link>
-            </RouterLink>
+            <RouterLink to="/signup"><Link>Sign Up</Link></RouterLink>
           </>
         )}
       </LinksContainer>
@@ -104,7 +99,7 @@ export const Navbar = () => {
             backgroundcolor="#F3F9FB"
             hoverbackgroundcolor="#1AE216"
             hovercolor="white"
-            onClick={()=>handleCategoryClick("fashion")}
+            onClick={() => handleCategoryClick("fashion")}
           >
             Fashion Man
           </Button>
@@ -112,8 +107,7 @@ export const Navbar = () => {
             backgroundcolor="#F2F8FB"
             hoverbackgroundcolor="#1AE216"
             hovercolor="white"
-            onClick={()=>handleCategoryClick("electronics")}
-
+            onClick={() => handleCategoryClick("electronics")}
           >
             Electronics
           </Button>
@@ -121,8 +115,7 @@ export const Navbar = () => {
             backgroundcolor="#F2F8FB"
             hoverbackgroundcolor="#1AE216"
             hovercolor="white"
-            onClick={()=>handleCategoryClick("supermarket")}
-
+            onClick={() => handleCategoryClick("supermarket")}
           >
             Supermarket
           </Button>
@@ -130,20 +123,21 @@ export const Navbar = () => {
             backgroundcolor="#F2F8FB"
             hoverbackgroundcolor="#1AE216"
             hovercolor="white"
-            onClick={()=>handleCategoryClick("lifestyle")} 
->
+            onClick={() => handleCategoryClick("lifestyle")}
+          >
             LifeStyle
           </Button>
           <Button
             backgroundcolor="#F2F8FB"
             hoverbackgroundcolor="#1AE216"
             hovercolor="white"
-            onClick={()=>handleCategoryClick("decoration")} 
->
+            onClick={() => handleCategoryClick("decoration")}
+          >
             Decoration
           </Button>
         </ButtonsContainer>
       </BottomContainer>
+
     </Nav>
   );
 };
