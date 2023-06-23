@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../common/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { registerCustomer } from "../../../api/services/auth.service";
-import ImageUploader from "../../common/ImageUploader/ImageUploader";
+//import ImageUploader from "../../common/ImageUploader/ImageUploader";
 
 const Register: React.FC = () => {
   const RegisterInputs = [
@@ -57,28 +57,7 @@ const Register: React.FC = () => {
         },
       },
     },
-    {
-      id: 15,
-      name: "image",
-      type: "file",
-      label: "Image",
-      accept: "image/*", // Specify accepted file types, e.g., "image/png,image/jpeg"
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files && e.target.files[0];
-        if (file) {
-          // Read the file and convert it to a base64 string
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const base64String = reader.result as string;
-            setImage(base64String);
-          };
-          reader.readAsDataURL(file);
-        }
-      },
-      validationRules: {
-        required: "Image is required",
-      },
-    },
+    
   ];
   const [image, setImage] = useState<string | null>(null);
 
@@ -108,17 +87,7 @@ const Register: React.FC = () => {
         <HeadTitle>Register/ أدخل</HeadTitle>
         <WelcomeMsg>Join & Save / انضم و وفر</WelcomeMsg>
         {RegisterInputs.map((RegisterInput) => {
-      if (RegisterInput.name === "image") {
-        return (
-          <ImageUploader
-            key={RegisterInput.id}
-            label={RegisterInput.label}
-            accept={RegisterInput.accept}
-            onChange={RegisterInput.onChange}
-            error={errors[RegisterInput.name]?.message}
-          />
-        );
-      }
+     
       return (
         <Input
           key={RegisterInput.id}

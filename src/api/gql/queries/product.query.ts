@@ -246,3 +246,14 @@ query
       }
     }
   `;
+  export const GET_CUSTOMER_QUERY = gql`
+  query GetCustomer($customerId: String!) {
+    getCustomer(id: $customerId) {
+      _id
+      firstName
+      lastName
+      email
+      
+    }
+  }
+`;

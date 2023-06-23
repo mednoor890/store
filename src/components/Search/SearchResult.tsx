@@ -6,7 +6,7 @@ import Card from "../common/Card/Card";
 import { CategoryContainer } from "../Category/Category.styled";
 import { CardContainer } from "../promotions/Promotions.styled";
 
-const SearchResults = () => {
+const SearchResults:React.FC = () => {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("query");
 

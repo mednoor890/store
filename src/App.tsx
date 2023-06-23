@@ -11,6 +11,7 @@ import {
 import Products from './pages/Products';
 import CategoryPage from './components/Category/Category';
 import Search from './pages/Search';
+import UserProfile from './pages/UserProfile';
 function App() {
 
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="promotions" element={<Products/>}/>
         <Route path="/:category" element={<CategoryPage/>} />
         <Route path="/search" element={<Search/>} />
-
+        <Route path="/profile/:userId" element={<UserProfile/>} />
       </Routes>
     </Router>
       

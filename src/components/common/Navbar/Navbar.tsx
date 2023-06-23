@@ -23,10 +23,6 @@ export const Navbar = () => {
  // const [showSearchResults, setShowSearchResults] = useState(false);
 
   const navigate = useNavigate();
-
-  
-  
-
   useEffect(() => {
     checkTokenValidity();
   }, []);
@@ -66,11 +62,24 @@ export const Navbar = () => {
 
   const handleCategoryClick = async (category: string) => {
     try {
-      navigate(`/${category}`);
+      const authToken = Cookies.get("customerToken");
+      if (authToken) {
+        const decodedToken = jwtDecode<{ sub: string }>(authToken);
+        const userId = decodedToken.sub;
+        if (category === "profile" && userId) {
+          navigate(`/profile/${userId}`);
+        } else {
+          navigate(`/${category}`);
+        }
+      } else {
+        
+        navigate("/signin");
+      }
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <Nav>
@@ -78,12 +87,16 @@ export const Navbar = () => {
         <TextContainer>Welcome!! Fi Promowafar !! عسلامة</TextContainer>
       </TopContainer>
      <RouterLink to="/"><Promo>PromoWAfar</Promo></RouterLink> 
-      <SearchBar type="text" placeholder="Search / ابحث" onKeyPress={handleKeyPress} />
+      <SearchBar type="text" placeholder="Search / ابحث" onKeyDown={handleKeyPress} />
       <FontAwesomeIcon icon={faSearch} style={{ color: "#1AE216", position: "absolute", top: "80px", left: "480px" }} />
       <LinksContainer>
         {token ? (
           <>
+          
+            <Link onClick={() => handleCategoryClick("profile")}>View Profile</Link>
+            <Separator/>
             <Link onClick={handleLogout}>Logout</Link>
+            
           </>
         ) : (
           <>
