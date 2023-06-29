@@ -78,6 +78,6 @@ position:absolute;
 margin-right:2px;
 `;
 export const Image = styled.img`
-  height: 316px;
-  width: 500px;
+  height: 266px;
+  width: 350px;
 `;

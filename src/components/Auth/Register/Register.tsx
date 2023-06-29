@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../common/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { registerCustomer } from "../../../api/services/auth.service";
-//import ImageUploader from "../../common/ImageUploader/ImageUploader";
+import FileBase from 'react-file-base64';
 
 const Register: React.FC = () => {
   const RegisterInputs = [
@@ -57,19 +57,25 @@ const Register: React.FC = () => {
         },
       },
     },
-    
+   
   ];
   const [image, setImage] = useState<string | null>(null);
 
   const { handleSubmit, register, formState: { errors },reset } = useForm();
   const navigate =useNavigate();
+  const handleImageUpload = (base64Image: string) => {
+    setImage(base64Image);
+  };
   const onSubmit = async (data: any) => {
     try {
-      if (data){
-      const response = await registerCustomer(data);
+      const newData={...data,image:image}
+      if (newData){
+      const response = await registerCustomer(newData);
       console.log(response);
       navigate("/signin")
-          console.log(data);}
+          console.log(data);
+        console.log(response);
+      console.log(newData);}
           else
           {
             reset()
@@ -101,6 +107,11 @@ const Register: React.FC = () => {
         />
       );
     })}
+     <FileBase
+          type="file"
+          multiple={false}
+          onDone={({ base64 }) => handleImageUpload(base64)}
+        />
         <Button
           type="submit"
           backgroundcolor="#1AE216"

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const BrandsContainer=styled.div`
 position:absolute;
 top:1600px;
-left:117px;
+left:70px;
 right:117px;
 width:1156px;
 height:381px;

@@ -253,7 +253,7 @@ query
       firstName
       lastName
       email
-      
+      image
     }
   }
 `;

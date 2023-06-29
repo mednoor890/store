@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const LowestContainer=styled.div`
 position:absolute;
 top:1203px;
-left:117px;
-right:117px;
+left:70px;
 width:1106px;
 height:381px;
 `

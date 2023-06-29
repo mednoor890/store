@@ -12,6 +12,7 @@ export type RegisterInput = {
     lastName: string;
     email: string;
     password: string;
+    image: string;
   };
 export const loginCustomer =async(email:string, password:string)=>
 {
@@ -52,7 +53,8 @@ export const registerCustomer =async(input:RegisterInput)=>
                 firstName:input.firstName,
                 lastName:input.lastName,
                 email:input.email,
-                password:input.password
+                password:input.password,
+                image:input.image
             }}
         })
         console.log("registerRequest response", response);

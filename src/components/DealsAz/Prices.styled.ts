@@ -29,9 +29,9 @@ padding-top:15px;
 export const PricesContainer = styled.div`
 position:relative;
 top:40px;
-right:-30px;
+right:-20px;
 gap: 100px; 
-  display: flex;
+display: flex;
  
 `;
 export const P = styled.h2`

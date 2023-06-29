@@ -23,6 +23,7 @@ export const REGISTER_MUTATION = gql`
       lastName
       email
       password
+      image
     }
   }
 `;

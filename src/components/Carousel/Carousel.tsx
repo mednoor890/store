@@ -14,11 +14,11 @@ import { useQuery } from "@apollo/client";
 const Carousel:React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
-    { id: 1, url: Aziza, name: "Aziza", query: GET_HIGHEST_AZIZA, backgroundColor: "#FF7262" },
-    { id: 2, url: PointM, name: "PointM", query: GET_HIGHEST_POINTM, backgroundColor: "black" },
-    { id: 3, url: Exist, name: "Exist", query: GET_HIGHEST_EXIST, backgroundColor: "#FEC500" },
-    { id: 4, url: Wiki, name: "Wiki", query: GET_HIGHEST_WIKI, backgroundColor: "#59CFA8" },
-    {id:5,url:Baity,name: "Baity", query:GET_HIGHEST_BAITY, backgroundColor: "turquoise"}
+    { id: 1, url: Aziza, name: "Aziza", query: GET_HIGHEST_AZIZA, backgroundColor: "RGB(237, 206, 28)" },
+    { id: 2, url: PointM, name: "PointM", query: GET_HIGHEST_POINTM, backgroundColor: "RGB(237, 206, 28)" },
+    { id: 3, url: Exist, name: "Exist", query: GET_HIGHEST_EXIST, backgroundColor: "RGB(237, 206, 28)" },
+    { id: 4, url: Wiki, name: "Wiki", query: GET_HIGHEST_WIKI, backgroundColor: "RGB(237, 206, 28)" },
+    {id:5,url:Baity,name: "Baity", query:GET_HIGHEST_BAITY, backgroundColor: "RGB(237, 206, 28)"}
   ];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -61,32 +61,33 @@ const Carousel:React.FC = () => {
           <Image key={images[currentIndex].id} src={images[currentIndex].url} alt={images[currentIndex].name} />
     </ImageContainer>
       
-      <Button 
-      backgroundcolor="#F3F9FB" 
-      hoverbackgroundcolor="#1AE216"
-      hovercolor="white"
-      borderradius="50%"
-      height="86px"
-      width="86px"
-      left="-44px"
-      top="30%"
-      position="relative"
-      transform="translateY(-50%)"
-     borderright="5px solid white"
-     borderbottom="5px solid white"
-     bordertop="5px solid white"
-     onClick={handlePrevious}
-    >
-      <FontAwesomeIcon icon={faAngleLeft} />
-    </Button>
+    <Button 
+  backgroundcolor="#F3F9FB" 
+  hoverbackgroundcolor="#1AE216"
+  hovercolor="white"
+  borderradius="95%"
+  height="86px"
+  width="86px"
+  left="-44px"
+  top="30%"
+  position="relative"
+  transform="translateY(-50%)"
+  borderright="5px solid white"
+  borderbottom="5px solid white"
+  bordertop="5px solid white"
+  onClick={handlePrevious}
+>
+  <FontAwesomeIcon icon={faAngleLeft} />
+</Button>
+
     <Button 
       backgroundcolor="#F3F9FB" 
       hoverbackgroundcolor="#1AE216"
       hovercolor="white"
-      borderradius="85%"
+      borderradius="95%"
       height="86px"
       width="86px"
-      left="960px"
+      left="880px"
       position="relative"
       top="30%"
       transform="translateY(-50%)"

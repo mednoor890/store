@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DealsContainer=styled.div`
 position:absolute;
 top:622px;
-left:117px;
+left:80px;
 right:117px;
 width:1136px;
 height:381px;
