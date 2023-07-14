@@ -12,6 +12,7 @@ import Products from './pages/Products';
 import CategoryPage from './components/Category/Category';
 import Search from './pages/Search';
 import UserProfile from './pages/UserProfile';
+//import Promotion from './pages/Promotion';
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="signin" element={<Login/>}/>
         <Route path="signup" element={<Register/>}/>
         <Route path="promotions" element={<Products/>}/>
+        <Route path="promotions/:page" element={<Products/>}/>
         <Route path="/:category" element={<CategoryPage/>} />
         <Route path="/search" element={<Search/>} />
         <Route path="/profile/:userId" element={<UserProfile/>} />

@@ -87,7 +87,7 @@ const Carousel:React.FC = () => {
       borderradius="95%"
       height="86px"
       width="86px"
-      left="880px"
+      left="950px"
       position="relative"
       top="30%"
       transform="translateY(-50%)"
