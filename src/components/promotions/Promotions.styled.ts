@@ -10,14 +10,13 @@ export const CardsContainer = styled.div`
   top:500px;
   left:10px;
 `;
-export const Div=styled.div`
-position:relative;
-bottom:5px;
-left:960px;
-background-color:red;
+export const Div = styled.div`
 display: flex;
   justify-content: center;
-`
+  position:relative;
+  top:555px;
+  
+`;
 export const Sign=styled.h1`
 color:#1AE216;
 font-size:18px;

@@ -13,7 +13,7 @@ import { Button } from "../common/Button/Button";
 const Promotions: React.FC = () => {
   const { page: pageParam='1' } = useParams<{ page: string | undefined}>();
   const [currentPage, setCurrentPage] = useState(parseInt(pageParam));
-  const limit = 52;
+  const limit = 64;
   const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -38,8 +38,11 @@ const Promotions: React.FC = () => {
       navigate(`/promotions/${prevPage}`);
     }
   };
-  
-  const hasNextPage = products && products.length <= limit;
+  const totalProducts=products &&limit/products.length
+  console.log(totalProducts);
+  /*const mod=totalProducts%limit
+  console.log(mod)*/
+ // const hasNextPage = products && products.length <= limit;
 
   if (loading) {
     return <LowestContainer><LoadingIcon/></LowestContainer>;
@@ -63,6 +66,7 @@ const Promotions: React.FC = () => {
   }
 
   return (
+    <>
     <CardsContainer>
       {products.map((product) => (
         <CardContainer key={product._id}>
@@ -77,30 +81,43 @@ const Promotions: React.FC = () => {
           />
         </CardContainer>
       ))}
-      <Div>
+     
+    </CardsContainer>
+    <Div>
         {currentPage > 1 && (
-          <Button backgroundcolor="#F5F5F5" hoverbackgroundcolor="#1AE216" color="black" position="absolute" hovercolor="F5F5F5" left="2px" top="0px"  onClick={prevPage}>
+          <Button
+          backgroundcolor="#F5F5F5"
+          hoverbackgroundcolor="#1AE216"
+          color="black"
+          hovercolor="#F5F5F5"
+          
+          position="absolute"
+          left="40%"
+           bottom="15px"
+          onClick={prevPage}
+          >
             Previous
           </Button>
         )}
-        
-        {hasNextPage&& (
+
+        {/* Check if there are products on the next page */}
+        {products.length === limit && (
           <Button
-            backgroundcolor="#F5F5F5"
-            hoverbackgroundcolor="#1AE216"
-            color="black"
-            hovercolor="F5F5F5"
-            position="absolute"
-            left="140px"
-            top="0"
-            onClick={nextPage}
+          backgroundcolor="#F5F5F5"
+          hoverbackgroundcolor="#1AE216"
+          font-family="Actor"
+          color="black"
+          hovercolor="#F5F5F5"
+          position="absolute"
+          left="50%"
+          bottom="15px"
+          onClick={nextPage}
           >
             Next
           </Button>
         )}
       </Div>
-    </CardsContainer>
-        
+      </>      
   );
 };
 

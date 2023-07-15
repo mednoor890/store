@@ -5,8 +5,6 @@ import { GET_CUSTOMER_QUERY } from "../../api/gql/queries/product.query";
 import styled from "styled-components";
 
 const Container = styled.div`
-  border: 2px solid rgb(26, 226, 22);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
   display: flex;
   flex-direction: column;

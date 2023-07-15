@@ -18,10 +18,12 @@ interface StyledButtonProps
   borderbottom?:string;
   fontsize?:string;
   color?:string;
+  bottom?:string;
 }
 export const Btn = styled.button<StyledButtonProps>`
 background-color: ${props => props.backgroundcolor ? props.backgroundcolor : '#5832EB'};
 padding:9px 14px 9px 14px;
+bottom:${props => props.bottom}
 transform: ${props => props.transform};
 cursor:pointer;
 border-radius: ${props=> props.borderradius ? props.borderradius :'18px'};

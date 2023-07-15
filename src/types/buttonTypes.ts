@@ -13,6 +13,7 @@ export interface ButtonProps {
     top?:string;
     position?:string;
     transform?:string;
+    bottom?:string;
     borderleft?:string;
     borderright?:string;
     bordertop?:string;
